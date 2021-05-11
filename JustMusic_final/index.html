@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+</head>
+
+<body>
+	<div id="app">
+		<div id="top_container">
+			<div id="left_box">
+				<div id="icon_wrapper">
+					<img src="img/music.png" >
+				</div>
+				<!-- <div id="history_wrapper">
+					<span id="arrow_left" @click="prePage">
+						<img src="img/左箭头.png" >
+					</span>
+					<span id="arrow_right" @click="nextPage">
+						<img src="img/右箭头.png" >
+					</span>
+				</div> -->
+			</div>
+			
+			
+			<div id="right_box">
+				<div id="search_bar">
+					<div id="search_icon" @click="search()">
+						<img src="img/搜索.png">
+					</div>
+					<input type="text" name="search" id="search" v-model="musicQuery" @keyup.enter="search()"/>
+				</div>
+			</div>
+		</div>
+		<div id="index_container">
+			<div id="nav">
+				<ul>
+					<li >
+						<a href="javascript:void(0);" @click="listMusic()" id="rankLabel">排行</a>
+					</li>
+					<!-- <li >
+						<a href="javascript:void(0);" @click="fmMusic()">音乐电台</a>
+					</li> -->
+					<li v-show="isShow" >
+						<a href="javascript:void(0);" @click="searchResultMusic()" id="searchLabel">搜索</a>
+					</li>
+					<li v-show="showComment">
+						<a href="javascript:void(0);" @click="musicComment()"  id="commentLabel">评论</a>
+					</li>
+				</ul>
+				<div id="musicAlbum_name">
+					<div id="music_album">
+						<img v-bind:src="album_src" >
+					</div>
+					<div id="music_name">
+						{{ music_name }}
+					</div>
+				</div>
+			</div>
+			<div id="main">
+				
+				<div id="musicList" v-show="musicListShow">
+					<div class="rank">
+						<img src="img/飙升榜.jpg" class="albumRank">
+						<div class="rankCaption">
+							<span>排行</span>
+							<span>歌曲</span>
+						</div>
+						<ul class="rankUl">
+							<li class="rankLi" v-for="(song,index) in rankList1" >
+								<span>
+									{{ index+1 }}
+								</span>
+								<span>
+									<a href="javascript:void(0);" @click="playListMusic(song.id,song.name)">
+										{{ song.name }}
+									</a>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="rank">
+						<img src="img/新歌榜.jpg" class="albumRank">
+						<div class="rankCaption">
+							<span>排行</span>
+							<span>歌曲</span>
+						</div>
+						<ul class="rankUl">
+							<li class="rankLi" v-for="(song,index) in rankList2" >
+								
+								<span>
+									{{ index+1 }}
+								</span>
+								<span>
+									<a href="javascript:void(0);" @click="playListMusic(song.id,song.name)">
+										{{ song.name }}
+									</a>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="rank">
+						<img src="img/原创榜.jpg" class="albumRank">
+						<div class="rankCaption">
+							<span>排行</span>
+							<span>歌曲</span>
+						</div>
+						<ul class="rankUl">
+							<li class="rankLi" v-for="(song,index) in rankList3" >
+								
+								<span>
+									{{ index+1 }}
+								</span>
+								<span>
+									<a href="javascript:void(0);" @click="playListMusic(song.id,song.name)">
+										{{ song.name }}
+									</a>
+								</span>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- <div id="musicFm" v-show="musicFmShow">
+					musicFm
+				</div> -->
+				<div id="noSearch" v-show="noSearchShow">
+					<img src="img/提示.png" >
+					<div id="info">
+						先搜索一下吧~
+					</div>
+				</div>
+				<div id="searchResult" v-show="searchResultShow">
+					<div id="resultCaption">
+						<span id="musicName">歌曲</span>
+						<span id="musicianName">歌手</span>
+						<span id="albumName">专辑</span>
+						<span id="musicDuration">时长</span>
+					</div>
+					<ul id="resultUl">
+						<li v-for="song in songsArray">
+							<span><a href="javascript:void(0);" @click="playMusic(song.id,song.album.id,song.name)">
+								{{ song.name }}
+							</a></span>
+							<span>
+								{{ song.artists[0].name }}
+							</span>
+							<span>
+								{{ song.album.name }}
+							</span>
+							<span>
+								{{ Math.floor(song.duration/60000) }}:{{ Math.floor(song.duration/1000-Math.floor(song.duration/60000)*60) }}
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div id="commentPane" v-show="commentPaneShow">
+					<ul>
+						<li v-for="item in comments">
+							<div class="user">
+								<div class="userIcon">
+									<img :src="item.user.avatarUrl" >
+								</div>
+								
+								<div class="userName">  
+									{{ item.user.nickname }}
+								</div>
+							</div>
+							<div class="comment">
+								{{ item.content }}
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="player">
+				<audio controls="controls"  autoplay="autoplay" v-bind:src="musicSrc" >
+					当前浏览器不支持audio
+				</audio>
+			</div>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

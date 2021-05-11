@@ -1,0 +1,458 @@
+		*
+		{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			transition:.5s;
+		}
+		html,body
+		{
+			height: 100%;
+			width: 100%;
+			font-weight: 400;
+			font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,"\5FAE\8F6F\96C5\9ED1",Arial,sans-serif;
+		}
+		div
+		{
+			display: block;
+		}
+		#app
+		{
+			height: 100%;
+			width: 100%;
+		}
+		#app #top_container
+		{
+			height: 60px;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background-color: #F1F3F4;
+		}
+		#app #top_container #left_box #icon_wrapper img
+		{
+			height: 45px;
+			margin-top: 10px;
+			margin-left: 77.5px;
+		}
+		#icon_wrapper
+		{
+			float: left;
+		}
+	
+		
+		#search
+		{
+			float: right;
+			height: 40px;
+			margin-top: 10px;
+			padding: 10px;
+			border-radius: 10px;
+			border: 1px solid #C0C4CC;
+			color: rgb(44, 42, 42);
+			outline: none;
+		}
+		#search_icon
+		{
+			margin: 10px;
+			float: right;
+			height: 40px;
+			width: 40px;
+			background-color: #F1F3F4;
+			border-radius: 10px;
+			margin-right: 2%;
+		}
+		
+
+		#search_icon img
+		{
+			margin: 2.5px;
+			height: 35px;
+		}
+		#search_icon:hover
+		{
+			background-color: #EDEDED;
+			cursor: pointer;
+		}
+		#app #index_container
+		{
+			width: 200px;
+			height: 100%;
+			padding-top: 60px;
+			padding-bottom: 60px;
+			display: flex;
+			background-color: #ededed;
+		}
+		
+		#app #index_container #nav
+		{
+			background-color: #ededed;
+			width: 200px;
+			text-align: center;
+		}
+		
+		#app #index_container #nav ul li a
+		{
+			display: block;
+			height: 50px;
+			width: 160px;
+			font-size: 18px;
+			line-height: 50px;
+			text-decoration: none;
+			color: gray;
+			border-radius: 10px;
+		}
+		#app #index_container #nav ul li a:hover
+		{
+			background-color: #E7E7E7;	
+		}
+		#app #index_container #nav ul li a:focus
+		{
+			background-color: #E7E7E7;
+		}
+		
+		#app #index_container #nav ul li
+		{
+			margin: 20px;
+			list-style: none;
+		}
+		/* #app #index_container #nav ul li
+		{
+			height: 50px;
+			font-size: 18px;
+			line-height: 50px;
+			margin: 15px;
+			border-radius: 10px;
+			list-style: none;
+			cursor: pointer;
+		}
+		#app #index_container #nav ul li:hover
+		{
+			background-color: #E7E7E7;
+		} */
+		
+		#musicAlbum_name
+		{
+			width: 200px;
+			height: 200px;
+			position: fixed;
+			left: 0;
+			bottom: 60px;
+		}
+		
+		#musicAlbum_name #music_album img
+		{
+			width: 100px;
+			border-radius: 10px;
+			margin: 50px 50px 10px 50px;
+		}
+		
+		
+		
+		#main
+		{
+			width: calc(100% - 200px);
+			height: calc(100% - 120px);
+			background-color: whitesmoke;
+			position: fixed;
+			top: 60px;
+			left: 200px;
+		}
+		
+		#main #musicList
+		{
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			overflow-y: scroll;
+		}
+		.rank
+		{
+			display: table-cell;
+			width: 25%;
+			margin: 20px;
+			background-color: #F5F5F5;
+		/* 	border-radius: 10px; */
+		}
+		.albumRank
+		{
+			width: 60%;
+			border-radius: 10px;
+			margin: 20px 10px 10px 10px;
+		}
+		.rankUl
+		{
+			list-style: none;
+		}
+		.rank .rankCaption
+		{
+			width: 100%;
+		}
+		.rank .rankCaption span
+		{
+			display: inline-block;
+			width: 30%;
+			padding: 5px;
+			/* border-bottom: 1px solid #C0C4CC; */
+			text-align: center;
+			color: #535453;
+			background-color: #1ECD9A;
+			border-radius: 10px;
+			
+		}
+		.rank .rankUl .rankLi span
+		{
+			display: inline-block;
+			width: 30%;
+			padding: 5px;
+			border-bottom: 2px solid #EDEDED;
+			text-align: center;
+			margin-top: 5px;
+			color: #808080;
+			
+		}
+		.rank .rankUl .rankLi
+		{
+			font-size: 15px;
+		}
+		.rank .rankUl .rankLi span:hover
+		{
+			background-color: #C9C9C9;
+			border-radius: 10px;
+		}
+		
+		.rank .rankUl .rankLi span a
+		{
+			display: inline-block;
+			text-decoration: none;
+			color: #808080;
+		}
+		.rank .rankUl .rankLi span a:focus
+		{
+			background-color: #FDECBC;
+			border-radius: 5px;
+		}
+		#main #searchResult
+		{
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			overflow-y: scroll;
+			background-color: #F5F5F5;
+		}
+		#main #searchResult #resultCaption
+		{
+			width: calc(100% - 60px);
+			margin: 0 30px;
+			/* position: fixed;
+			top: 60px;
+			left: 230px; */
+		}
+		#main #noSearch
+		{
+			width: 100%;
+			height: 100%;
+			background-color: #F5F5F5;
+		}
+		#main #noSearch img
+		{
+			width: 20%;
+			margin-top: 10%;
+			margin-left: 20%;
+		}
+		#main #noSearch #info
+		{
+			display: inline-block;
+			margin-left: 20px;
+			font-size: 25px;
+			letter-spacing: 5px;
+		}
+		#main #searchResult #resultCaption span
+		{
+			text-align: center;
+			display: inline-block;
+			width: 16%;
+			font-size: 16px;
+			line-height: 35px;
+			height: 35px;
+			margin: 20px;
+			background-color: #DEDEDE;
+			border-radius: 6px;
+		}
+		#resultUl
+		{
+			width: calc(100% - 60px);
+			margin: 0 30px;
+		}
+		#resultUl li
+		{
+			
+			list-style: none;
+		}
+		
+		#resultUl li:hover
+		{
+			background-color: #EDEDED;
+			border-radius: 10px;
+		}
+		
+		#resultUl li span a
+		{
+			display: block;
+			text-decoration: none;
+			color: black;
+			/* 歌曲名超过宽度时自动变成省略号 */
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			overflow:hidden;
+		}
+		
+		#resultUl li span a:hover
+		{
+			background-color: #FDECBC;
+			border-radius: 10px;
+			border-bottom: 2px solid transparent;
+		}
+		
+		#resultUl li span a:focus
+		{
+			background-color: #FDECBC;
+			border-radius: 10px;
+			border-bottom: 2px solid transparent;
+		}
+		#resultUl li span
+		{
+			display: inline-block;
+			text-align: center;
+			font-size: 15px;
+			line-height: 35px;
+			height: 35px;
+			width: 16%;
+			margin: 0 20px;
+			border-bottom: 2px solid #EDEDED;
+			color: #808080;
+			/* 超过宽度时自动变成省略号 */
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			overflow:hidden;
+		}
+		/* #resultUl li span:focus
+		{
+			/* 被点击时自动去掉边框 */
+			border-bottom: 2px solid transparent !important;
+		} */
+		#resultUl li span:hover
+		{
+			background-color: #EDEDED;
+			border-radius: 10px;
+			border-bottom: 2px solid transparent;
+		}
+		/* #history_wrapper
+		{
+			padding:20px 20px 20px 85px;
+			float: left;
+		}
+		#arrow_left,#arrow_right:hover
+		{
+			cursor: pointer;
+		}
+		#arrow_left img
+		{
+			height: 20px;
+		}
+		#arrow_right img
+		{
+			height: 20px;
+		} */
+		#main #commentPane
+		{
+			width: 100%;
+			height: 100%;
+			overflow-y: scroll;
+		}
+		#main #commentPane ul
+		{
+			width: 100%;
+			list-style: none;
+		}
+		#main #commentPane ul li
+		{
+			margin: 10px auto;
+			margin-top: 20px;
+			width: 100%;
+			height: 100px;
+/* 			background-color: #C0C4CC; */
+			border: 1px solid transparent;
+			text-align: center;
+			
+		}
+		#main #commentPane ul li .user
+		{
+			display: inline-block;
+			float: left;
+			width: 20%;
+			height: 100%;
+			margin: 0 10px 0 30px;
+/* 			background-color: #FDECBC; */
+		}
+		#commentPane ul li .user .userIcon
+		{
+			width:75%;
+			height: 75%;
+			float: right;
+/* 			margin-top: 5px; */
+			text-align: center;
+			background-color: #EDEDED;
+			border-radius: 10px 10px 0 0;
+			margin: 0;
+		}
+		.user .userIcon img
+		{
+			margin-top: 10px;
+			height: 80%;
+			border-radius: 10px;
+		}
+		#commentPane ul li .user .userName
+		{
+			float: right;
+			width: 75%;
+			height: 25%;
+			text-align: center;
+			font-size: 12px;
+			margin: 0 auto;
+			padding-top: 3px;
+			background-color: #EDEDED;
+			border-radius: 0 0 10px 10px;
+			letter-spacing: 1px;
+		}
+		
+		#commentPane ul li .comment
+		{
+			display: inline-block;
+			float: left;
+			width: 70%;
+			padding: 10px 10px 10px 10px;
+			text-align: left;
+			background-color: #EDEDED;
+			border-radius: 10px;
+			letter-spacing: 1px;
+		}
+		#commentPane ul li .comment:hover
+		{
+			background-color: #E7E7E7;
+		}
+		#app #index_container #player
+		{
+			background-color: #F1F3F4;
+			height: 60px;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		#app #index_container #player audio
+		{
+			height:60px;
+			width: 100%;
+		}
