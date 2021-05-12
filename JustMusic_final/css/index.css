@@ -425,6 +425,10 @@
 			background-color: #EDEDED;
 			border-radius: 0 0 10px 10px;
 			letter-spacing: 1px;
+			/* 歌曲名超过宽度时自动变成省略号 */
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			overflow:hidden;
 		}
 		
 		#commentPane ul li .comment
