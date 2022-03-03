@@ -7,7 +7,6 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
-
 </head>
 
 <body>
@@ -17,6 +16,7 @@
 				<div id="icon_wrapper">
 					<img src="img/music.png" >
 				</div>
+				<p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p>
 				<!-- <div id="history_wrapper">
 					<span id="arrow_left" @click="prePage">
 						<img src="img/左箭头.png" >
@@ -37,6 +37,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div id="index_container">
 			<div id="nav">
 				<ul>
@@ -51,6 +52,9 @@
 					</li>
 					<li v-show="showComment">
 						<a href="javascript:void(0);" @click="musicComment()"  id="commentLabel">评论</a>
+					</li>
+					<li v-show="showLyric">
+						<a href="javascript:void(0);" @click="lyric()"  id="LyricLabel">歌词</a>
 					</li>
 				</ul>
 				<div id="musicAlbum_name">
@@ -178,7 +182,21 @@
 						</li>
 					</ul>
 				</div>
+				
+				<div id="lyricPane" v-show="lyricPaneShow">
+					<ul>
+						<li class="lyricLi" v-for="lrc in lyric_src" >
+							<span>
+								{{ lrc.lrc }}
+							</span>
+							
+						</li>
+					</ul>
+				</div>
 			</div>
+			
+			
+			
 			<div id="player">
 				<audio controls="controls"  autoplay="autoplay" v-bind:src="musicSrc" >
 					当前浏览器不支持audio
